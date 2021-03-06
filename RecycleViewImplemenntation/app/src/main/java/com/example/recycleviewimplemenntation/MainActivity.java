@@ -19,16 +19,25 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.Adapter myRecycleViewAdapter;
     RecyclerView.LayoutManager recyclerLayoutManager;
 
-    TextView tvSeeAll ;
-    protected void onCreate(LayoutInflater inflater , ViewGroup container , Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.activity_main , container , false);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         arrayList = new ArrayList<>();
+
         arrayList.add(new RecycleViewData(R.drawable.ic_launcher_background , "data"));
         arrayList.add(new RecycleViewData(R.drawable.ic_launcher_background , "data"));
         arrayList.add(new RecycleViewData(R.drawable.ic_launcher_background , "data"));
         arrayList.add(new RecycleViewData(R.drawable.ic_launcher_background , "data"));
         arrayList.add(new RecycleViewData(R.drawable.ic_launcher_background , "data"));
 
+        arrayRecycleView = findViewById(R.id.rcv);
+        arrayRecycleView.setHasFixedSize(true);
+
+        recyclerLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
+        arrayRecycleView.setLayoutManager(recyclerLayoutManager);
+
+        myRecycleViewAdapter = new RecycleViewAdapter(getBaseContext(),arrayList);
+        arrayRecycleView.setAdapter(myRecycleViewAdapter);
     }
 }
