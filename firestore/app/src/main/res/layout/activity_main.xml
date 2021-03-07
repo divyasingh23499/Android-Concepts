@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black">
 
     <EditText
         android:id="@+id/quote"
@@ -43,6 +44,7 @@
         android:gravity="center"
         android:background="@color/white"
         android:textColor="@color/black"
+        android:backgroundTint="@color/white"
         android:onClick="saveQuote"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

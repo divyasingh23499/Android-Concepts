@@ -3,9 +3,11 @@ package com.example.firestore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,21 +21,25 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     public static final String AUTHOR_KEY = "author";
     public static final String QUOTE_KEY = "quote";
+    EditText quoteView ;
+    EditText authorView ;
+    Button btn;
 
     private FirebaseFirestore mDocRef = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         quoteView = (EditText) findViewById(R.id.quote);
+         authorView = (EditText) findViewById(R.id.author);
+         btn = (Button) findViewById(R.id.save);
+         btn.setBackgroundColor(Color.WHITE);
+         btn.setTextColor(Color.BLACK);
     }
 
     public void saveQuote(View view) {
-        EditText quoteView = (EditText) findViewById(R.id.quote);
-        EditText authorView = (EditText) findViewById(R.id.author);
-
         String quoteText = quoteView.getText().toString();
         String authorText = authorView.getText().toString();
-
         if (quoteText.isEmpty() || authorText.isEmpty()) {
             return;
         }
